@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+Articles
+{% endblock %}
+{% block body %}
+<h1 class="title">Articles</h1>
+    {% if articles|length > 0  %}
+        {% for el in articles %}
+            <div class="post">
+                <h2 class="post-title">{{ el.title|upper }}</h2>
+                <div class="post-date-auth">
+                <div class="post-date">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                        </svg>
+                        {{ el.date.date() }}
+                    </div>
+                <div class="post-author">Author: {{el.author}}</div>
+                </div>
+                <p class="post-intro">{{ el.intro }}</p>
+                <div class="post-text">{{ el.text|truncate(50) }}</div>
+                <a href="/posts/{{ el.id }}" class="btn-readmore">Read more...</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>There is not any article</p>
+    {% endif %}
+{% endblock %}

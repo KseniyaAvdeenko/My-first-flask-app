@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="logo">
+          <span>FLASKAPP</span>
+        </div>
+        <nav class="menu">
+          <a class="menu-link" href="/home">Home</a>
+          <a class="menu-link" href="/about">About</a>
+          <a class="menu-link" href="/posts">Articles</a>
+          <a class="menu-link-add" href="/create-article"><p>Add</p></a>
+        </nav>
+      </header>
+      <main class="main">
+        {% block body %}{% endblock %}
+      </main>
+      <footer class="footer">
+        <p>Made by KA</p>
+      </footer>
+    </div><!-- page -->
+  </body>
+</html>
